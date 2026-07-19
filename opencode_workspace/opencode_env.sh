@@ -1,46 +1,41 @@
 #!/bin/bash
 # OpenCode Environment Configuration
-# Source this file to set up proxy and environment variables for OpenCode
+# Source this file to set up environment variables for OpenCode
+# Replace <your-token-here> placeholders with your actual values
+
+# AWS Bedrock Configuration
+export AWS_REGION="us-east-2"
+export AWS_BEARER_TOKEN_BEDROCK="<your-aws-bearer-token-here>"
+export CLAUDE_CODE_USE_BEDROCK=1
+
+export OPENCODE_NO_FLICKER=1
+
+export OPENAI_BASE_URL="https://bedrock-mantle.us-east-2.api.aws/v1"
+export OPENAI_API_KEY="$AWS_BEARER_TOKEN_BEDROCK"
+
+# Personal Access Tokens (replace with your values)
+export JIRA_PAT="<your-jira-pat-here>"
+export HF_TOKEN="<your-huggingface-token-here>"
+export GITHUB_TOKEN="<your-github-token-here>"
+export WIKI_TOKEN="<your-wiki-token-here>"
+
+## G3 server (internal Intel server)
+export ANTHROPIC_BASE_URL="http://172.26.46.165:31403"
+export ANTHROPIC_AUTH_TOKEN="<your-anthropic-auth-token-here>"
+
+# opencode-init alias
+alias opencode-init='$HOME/bin/opencode-init'
+
+alias tmux-remote='$HOME/bin/tmux-remote'
+
+function b70 { if mountpoint -q ~/remote/b70 && [ -d ~/remote/b70/home/johnypau ]; then cd ~/remote/b70/home/johnypau/; else echo "[WARN] b70 mount not available. Run: rclone-init"; return 1; fi; }
+function b60 { if mountpoint -q ~/remote/b60 && [ -d ~/remote/b60/home/johnypau ]; then cd ~/remote/b60/home/johnypau/; else echo "[WARN] b60 mount not available. Run: rclone-init"; return 1; fi; }
+alias rclone-init='~/remote/rclone.sh'
+
+export DIARY_DISK="https://github.com/johnypaulintel/diary"
 
 # Intel Proxy Configuration
-export HTTP_PROXY="http://proxy-dmz.intel.com:912"
-export HTTPS_PROXY="http://proxy-dmz.intel.com:912"
-export http_proxy="http://proxy-dmz.intel.com:912"
-export https_proxy="http://proxy-dmz.intel.com:912"
-
-# No Proxy Settings
-export NO_PROXY="localhost,127.0.0.1,.intel.com,intel.com,github.com,intel.github.com"
-export no_proxy="localhost,127.0.0.1,.intel.com,intel.com,github.com,intel.github.com"
-
-# Docker Proxy Configuration (for containers)
-export DOCKER_BUILD_PROXY="http://proxy-dmz.intel.com:912"
-
-# Python/Pip Proxy
-export PIP_PROXY="http://proxy-dmz.intel.com:912"
-export PIP_TRUSTED_HOST="proxy-dmz.intel.com"
-
-# Git Configuration
-export GIT_SSL_NO_VERIFY=1
-
-# Conda Proxy
-export CONDA_PROXY="http://proxy-dmz.intel.com:912"
-
-# Additional Intel Network Settings
-export INTEL_PROXY="http://proxy-dmz.intel.com:912"
-
-# Function to verify proxy settings
-verify_proxy() {
-    echo "Current proxy settings:"
-    echo "HTTP_PROXY: $HTTP_PROXY"
-    echo "HTTPS_PROXY: $HTTPS_PROXY"
-    echo "NO_PROXY: $NO_PROXY"
-    echo ""
-    echo "Testing proxy connectivity..."
-    curl -s --max-time 5 http://www.google.com > /dev/null && echo "HTTP proxy: OK" || echo "HTTP proxy: FAILED"
-    curl -s --max-time 5 https://www.google.com > /dev/null && echo "HTTPS proxy: OK" || echo "HTTPS proxy: FAILED"
-}
-
-# Uncomment to verify on source
-# verify_proxy
-
-echo "OpenCode environment loaded. Proxy configured for Intel network."
+export HTTPS_PROXY=http://proxy-dmz.intel.com:912
+export HTTP_PROXY=http://proxy-dmz.intel.com:912
+export http_proxy=http://proxy-dmz.intel.com:912
+export https_proxy=http://proxy-dmz.intel.com:912
