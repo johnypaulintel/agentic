@@ -39,3 +39,7 @@ export HTTPS_PROXY=http://proxy-dmz.intel.com:912
 export HTTP_PROXY=http://proxy-dmz.intel.com:912
 export http_proxy=http://proxy-dmz.intel.com:912
 export https_proxy=http://proxy-dmz.intel.com:912
+
+# NO_PROXY settings to bypass proxy for internal networks
+export NO_PROXY="localhost,127.0.0.1,.intel.com,intel.com,172.26.0.0/16,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8"
+export no_proxy="$NO_PROXY"
