@@ -81,7 +81,10 @@ git diff --staged --stat
 # Show staged changes
 git diff --staged
 
-# Present summary table to user:
+# Present summary report to user with repo and branch info:
+# Repository: <org>/<repo-name>
+# Branch: <branch-name>
+#
 # | Metric           | Count |
 # |------------------|-------|
 # | Files Changed    | X     |
@@ -107,6 +110,19 @@ git push -u origin <branch-name>
 | "401" | Token expired - ask user for new token |
 | Merge conflicts | Show conflicts, ask user how to proceed |
 | Already cloned | Ask: use existing, re-clone, or different location |
+
+## Frequently Used Repositories
+
+| Repository | Organization | Purpose |
+|-----------|--------------|---------|
+| agentic | johnypaulintel | Skills, bin scripts, workspace configs |
+| diary | johnypaulintel | Daily work log and diary |
+| claude.automation.aep-tools.ae-partner | johnypaulintel | AEP tools and automation scripts |
+| scalable-deploy-intel | intel-sandbox | vLLM disaggregated prefill/decode Docker configs |
+| applications.ai.gpu.vllm-xpu | intel-innersource | vLLM XPU development (latest) |
+| applications.validation.server-gpu.qualification.vts | intel-innersource | Intel GPU VTS (validation test suite) |
+| aice-k8-templates | intel-sandbox | Kubernetes templates |
+| pti-gpu | github.com/intel | Intel PTI GPU tracing tools (public) |
 
 ## References
 
