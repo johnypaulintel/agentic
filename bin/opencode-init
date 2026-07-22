@@ -94,6 +94,16 @@ if [ -n "$DIARY_DISK" ]; then
     else
         error "Failed to copy diary commands"
     fi
+    
+    # Copy diary skills to .claude/skills/
+    if [ -d "$DEST_DIR/.diary/.claude/skills/diary" ]; then
+        mkdir -p "$DEST_DIR/.claude/skills"
+        if cp -r "$DEST_DIR/.diary/.claude/skills/diary" "$DEST_DIR/.claude/skills/"; then
+            info "Diary skill installed"
+        else
+            error "Failed to copy diary skill"
+        fi
+    fi
 else
     warn "DIARY_DISK not set, skipping diary setup"
 fi
